@@ -36,6 +36,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         Book book=mBookList.get(position);
         holder.onBind(book);
     }
+    
 
     @Override
     public int getItemCount() {
