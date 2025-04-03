@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
@@ -62,6 +64,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             titleTv.setText(book.getTitle());
             authorTv.setText(book.getAuthor());
             pubTv.setText(book.getPublisher());
+            Glide.with(thumbIv.getContext())
+                    .load(book.getThumbUrl())
+                    .into(thumbIv);
         }
 
 
