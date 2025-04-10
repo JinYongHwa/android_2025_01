@@ -3,6 +3,7 @@ package kr.ac.mjc.itc2007261051;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,7 +34,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BookAdapter.OnBookClickListener {
 
     EditText keywordEt;
     Button searchBtn;
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         */
 
         bookAdapter=new BookAdapter(mBookList);
+        bookAdapter.setOnBookClickListener(this);
         booklistRv.setAdapter(bookAdapter);
         booklistRv.setLayoutManager(new LinearLayoutManager(this));
 
@@ -101,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 mBookList.clear();
                 for(BookDto bookDto:bookList){
                     Book book=new Book();
+                    book.setId(bookDto.getId());
                     book.setTitle(bookDto.getTitleStatement());
                     book.setAuthor(bookDto.getAuthor());
                     book.setPublisher(bookDto.getPublication());
@@ -126,5 +129,13 @@ public class MainActivity extends AppCompatActivity {
     }
     public void endLoding(){
         loadingPb.setVisibility(GONE);
+    }
+
+    @Override
+    public void onBookClick(Book book) {
+        Log.d("book",book.getTitle());
+        Intent intent=new Intent(this,BookActivity.class);
+        intent.putExtra("book",book);
+        startActivity(intent);
     }
 }

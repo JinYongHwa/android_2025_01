@@ -2,10 +2,19 @@ package kr.ac.mjc.itc2007261051.dto;
 
 public class BookDto {
 
+    private int id;
     private String thumbnailUrl;
     private String titleStatement;
     private String author;
     private String publication;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getThumbnailUrl() {
         return thumbnailUrl;

@@ -1,10 +1,21 @@
 package kr.ac.mjc.itc2007261051;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable {
+    private int id;
     private String thumbUrl;
     private String title;
     private String author;
     private String publisher;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getThumbUrl() {
         return thumbUrl;
